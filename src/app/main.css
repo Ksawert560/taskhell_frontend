@@ -73,6 +73,14 @@ nav ul{
     list-style: none;
 }
 
+nav ul li{
+    transition: .1s ease-in;
+}
+nav ul li:hover{
+    cursor: pointer;
+    color: var(--primary);
+}
+
 .hero, .formSection{
     display: flex;
     row-gap: 20px;
@@ -111,4 +119,93 @@ h1, p, h1 span, p span{
     font-weight: bold;
     width: 150px;
     text-align: center;
+}
+.loginSection{
+  height: 50vh;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginChooser{
+  background-color: var(--background);
+  border: 2px solid var(--text);
+  border-radius: 7px;
+  width: 400px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px; 
+  padding: 0px;
+  box-sizing: border-box;
+  margin-bottom: -100px;
+}
+
+.loginChooser .loginOption{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--text);
+  padding: 10px 10px;
+  margin: 0px;
+  border-radius: 5px 0px 0px 5px;
+  width: 100%;
+}
+.loginChooser .loginOption:nth-child(2){
+  border-radius: 0px 5px 5px 0px;
+}
+
+.loginSelected{
+  background-color: var(--primary);
+  color: var(--background);
+}
+form{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 400px;
+}
+
+form input[type="text"], form input[type="password"]{
+  border: 1px solid var(--text);
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px 0px;
+  background-color: var(--background);
+  color: var(--text);
+  width: 100%;
+  transition: .2s ease-in;
+}
+
+form input[type="text"]:focus, form input[type="password"]:focus{
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  outline: none;
+}
+
+form input[type="submit"]{
+  background-color: var(--primary);
+  border-radius: 5px;
+  color: var(--background);
+  font-weight: bold;
+  width: 150px;
+  text-align: center;
+  padding: 10px 20px;
+  margin-top: 20px;
+}
+form input[type="submit"]:hover{
+  cursor: pointer;
+}
+
+
+
+/* ERROR SECTION */
+.errorMsg{
+  color: red;
+  visibility: hidden;
+  margin: 0px;
+  padding: 0px
 }
