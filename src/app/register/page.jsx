@@ -1,5 +1,5 @@
 'use client'
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import Nav from "../components/Nav";
 import styles from "../../app/main.css";
 import Link from "next/link";
@@ -58,26 +58,31 @@ function Login(){
         return true
     }
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
-    if(isEmpty() && isPasswordMatch()){
+    if (isEmpty() && isPasswordMatch()) {
         try {
-            const response = await axios.put('http://localhost:8080/users', {
-                username: formData.username,
-                password: formData.password
-              }, {
+            const data = new FormData();
+            data.append('username', formData.username);
+            data.append('password', formData.password);
+            const jsonData = {};
+            data.forEach((value, key) => (jsonData[key] = value));
+
+            const jsonString = JSON.stringify(jsonData);
+            console.log(jsonString);
+
+            let response = await axios.put('http://localhost:8080/users', JSON.stringify(jsonString), {
                 headers: {
-                  'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data'
                 }
-              }
-            )
+            });
             console.log('Dane wysłane pomyślnie!', response.data);
         } 
         catch (error) {
-        console.error('Błąd podczas wysyłania danych:', error);
+            console.error('Błąd podczas wysyłania danych:', error);
         }
     }
-  };
+};
 
     return (
     <main className={styles.page}>
