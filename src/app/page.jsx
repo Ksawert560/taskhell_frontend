@@ -20,11 +20,11 @@ export default function Page() {
       </div>
       <div className="smallText">
         <p>
-          Free and unflexible app to destroy your will and productivity cause
-          we hate to-do-lists. <span className="lowOpacity">[not really tho]</span>
+          Free and unflexible app to ruin your day and destroy your productivity because
+          we hate to-do-lists. <span className="lowOpacity">[not really]</span>
           <br />
           From the team that brought you nothing and uses vikunja.
-          <span className="lowOpacity">[why tho?]</span>
+          <span className="lowOpacity">[why though?]</span>
         </p>
       </div>
 
