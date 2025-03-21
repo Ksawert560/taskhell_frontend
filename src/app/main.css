@@ -24,11 +24,10 @@
     align-items: center;
     justify-content: center;
   }
-  
   * {
     box-sizing: border-box;
     padding: 0;
-    margin: 10px 20px;
+    margin: 0px;
   }
   
   a {
@@ -54,7 +53,8 @@ nav{
     display: grid;
     align-items: center;
     grid-template-columns: 1fr 1fr;
-    margin-bottom: 80px;
+    margin: 20px 0 80px 0;
+    padding: 10px 0;
 }
 nav .menu{
   padding-left:0px;
@@ -75,19 +75,29 @@ nav .hiddenMenu ul{
 nav h1{
     font-size: 1.5rem;
     font-weight: bold;
+    margin: 0px;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    text-align: left;
+    padding: 0px;
+    width: 100%;
 }
 nav .mainMenuList{
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: right;
-    column-gap: 0px;
+    align-items: right;
+    column-gap: 30px;
     list-style: none;
-    padding-left: 0px;
+    padding: 0px;
+    margin: 0px;
 }
 
 nav .mainMenuList li{
   margin: 0px;
+  /* padding: 0px; */
   transition: .1s ease-in;
 }
 nav .mainMenuList li:hover{
@@ -193,9 +203,9 @@ form{
 
 .passDiv svg{
   position: absolute;
-  top: 5%;
-  left: 85%;
-  transform: translate(0%, 20%);
+  top: 20%;
+  left: 90%;
+  transform: translate(0%, 30%);
   transition: .1s ease-in;
 }
 
@@ -235,7 +245,20 @@ form input[type="submit"]:hover{
   cursor: pointer;
 }
 
-
+/* ABOUT PAGE */
+.aboutSection{
+  display: flex;
+  row-gap: 20px;
+  align-items: left;
+  justify-content: left;
+  flex-direction: column;
+  padding: 0px;
+  height: 80vh;
+  width: 100%;
+}
+.aboutSection h2{
+  margin: 0px;
+}
 
 /* ERROR SECTION */
 .errorMsg{
