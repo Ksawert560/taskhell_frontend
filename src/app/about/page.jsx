@@ -3,12 +3,13 @@ import Nav from "../components/Nav";
 import styles from "../../app/main.css";
 import Link from "next/link";
 
-function Dashboard(){
+function About(){
     return (
     <main className={styles.page}>
-        dashboard
+        <Nav />
+        about page lol
     </main>
     )
 }
 
-export default Dashboard;
+export default About;

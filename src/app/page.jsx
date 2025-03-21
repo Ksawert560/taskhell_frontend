@@ -12,9 +12,7 @@ export default function Page() {
     <section className="hero">
       <div className="bigText">
         <h1>
-          DULL YOUR <span className="primary">THINKING</span>.
-        </h1>
-        <h1>
+          DULL YOUR <span className="primary">THINKING</span>.<br />
           <span className="primary">FREE</span> YOUR MIND.
         </h1>
       </div>
