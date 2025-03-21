@@ -44,6 +44,10 @@ function Register(){
       pathSVG2.getAttribute("d") === closedEye ? pathSVG2.setAttribute("d", openEye) : pathSVG2.setAttribute("d", closedEye); 
     }
 
+    function inputTextFocus(){
+      passInput.type === "password" ? "" : changeType();
+      passInputRep.type === "password" ? "" : changeTypeRep();
+    }
 
     function isEmpty() {  
       if (formData.username === "") {
@@ -91,9 +95,9 @@ const handleSubmit = async (e) => {
             const jsonString = JSON.stringify(jsonData);
             console.log(jsonString);
 
-            let response = await axios.put('http://localhost:8080/users', data, {
+            let response = await axios.put('http://localhost:8080/users', jsonString, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'aplication/json'
                 }
             });
             console.log('Dane wysłane pomyślnie!', response.data);
@@ -113,12 +117,18 @@ const handleSubmit = async (e) => {
                 <Link href={"/register"} className="loginOption loginSelected">REGISTER</Link>
             </div>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="username" placeholder="username" onChange={handleChange} value={formData.username}/>
+                <input type="text" name="username" placeholder="username" onChange={handleChange} value={formData.username} onFocus={inputTextFocus}/>
                 <div className="passDiv">
-                  <input type="password" name="password" placeholder="password" onChange={handleChange} value={formData.password} /><svg onClick={changeType} xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path className="pathSVG" d={openEye}></path></svg>
+                  <input type="password" name="password" placeholder="password" onChange={handleChange} value={formData.password} />
+                  <svg onClick={changeType} xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#000000" viewBox="0 0 256 256">
+                    <path className="pathSVG" d={openEye}></path>
+                  </svg>
                 </div>
                 <div className="passDiv">
-                  <input type="password" name="repeatPassword" placeholder="repeat password" onChange={handleChange} value={formData.repeatPassword} /><svg onClick={changeTypeRep} xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path className="pathSVG2" d={openEye}></path></svg>
+                  <input type="password" name="repeatPassword" placeholder="repeat password" onChange={handleChange} value={formData.repeatPassword} />
+                  <svg onClick={changeTypeRep} xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#000000" viewBox="0 0 256 256">
+                    <path className="pathSVG2" d={openEye}></path>
+                  </svg>
                 </div>
                 <p className="errorMsg">{errorMsg}</p>
                 <input type="submit" name="signin" value="REGISTER"/>

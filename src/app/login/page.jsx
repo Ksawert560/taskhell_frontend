@@ -60,21 +60,26 @@ function Login(){
   const handleSubmit = async (e) => {
     e.preventDefault();
     if(isEmpty()){
-        try {
-            const response = await axios.post('http://localhost:8080/login', {
-                username: formData.username,
-                passowrd: formData.password
-              }, {
-                headers: {
-                  'Content-Type': 'multipart/form-data'
-                }
-              }
-            )
-            console.log('Dane wysłane pomyślnie!', response.data);
-        } 
-        catch (error) {
+      try {
+        const data = new FormData();
+        data.append('username', formData.username);
+        data.append('password', formData.password);
+        const jsonData = {};
+        data.forEach((value, key) => (jsonData[key] = value));
+
+        const jsonString = JSON.stringify(jsonData);
+        console.log(jsonString);
+
+        let response = await axios.post('http://localhost:8080/login', jsonString, {
+            headers: {
+                'Content-Type': 'aplication/json'
+            }
+        });
+        console.log('Dane wysłane pomyślnie!', response.data);
+    } 
+    catch (error) {
         console.error('Błąd podczas wysyłania danych:', error);
-        }
+    }
     }
   };
 
@@ -87,9 +92,12 @@ function Login(){
                 <Link href={"/register"} className={"loginOption"}>REGISTER</Link>
             </div>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="username" placeholder="username" onChange={handleChange} value={formData.username}/>
+                <input type="text" name="username" placeholder="username" onChange={handleChange} value={formData.username} onFocus={changeType}/>
                 <div className="passDiv">
-                  <input type="password" name="password" placeholder="password" onChange={handleChange} value={formData.password} /><svg onClick={changeType} xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path className="pathSVG" d={openEye}></path></svg>
+                  <input type="password" name="password" placeholder="password" onChange={handleChange} value={formData.password} />
+                  <svg onClick={changeType} xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#000000" viewBox="0 0 256 256">
+                    <path className="pathSVG" d={openEye}></path>
+                  </svg>
                 </div>
                 <p className="errorMsg">{errorMsg}</p>
                 <input type="submit" name="signin" value="SIGN IN"/>

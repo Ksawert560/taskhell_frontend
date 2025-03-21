@@ -41,8 +41,10 @@ function Nav() {
     closeMenuIcon.style.display = "flex";
   }
   function hideMenu() {
-    hiddenMenu.style.display = "none";
-    closeMenuIcon.style.display = "none !important";
+    setTimeout(() => {
+      hiddenMenu.style.display = "none";
+      closeMenuIcon.style.display = "none !important";
+    }, 200);
   }
 
   if(size.width>1000){
@@ -72,16 +74,16 @@ function Nav() {
       <svg className="menuClose" onClick={hideMenu} xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#000000" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>
         <ul>
           <li>
-            <Link href="/">[home]</Link>
+            <Link href="/" onClick={hideMenu}>[home]</Link>
           </li>
           <li>
-            <Link href="/about">[about]</Link>
+            <Link href="/about" onClick={hideMenu}>[about]</Link>
           </li>
           <li>
-            <Link href="/login">[sign in]</Link>
+            <Link href="/login" onClick={hideMenu}>[sign in]</Link>
           </li>
           <li>
-            <Link href="/register">[register]</Link>
+            <Link href="/register" onClick={hideMenu}>[register]</Link>
           </li>
         </ul>
       </section>
