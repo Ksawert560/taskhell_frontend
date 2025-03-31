@@ -4,8 +4,25 @@
     --text: #242424;
     --accent: #6fcc8b;
     --primary: #d44221;
-  }
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+}
+
+body[data-theme="light"] {
+  --text: #242424;
+  --background: #ededed;
+  --backgroundSec: #dadada;
+  --primary: #d44221;
+  --secondary: #a5e496;
+  --accent: #70cd8a;
+}
+body[data-theme="dark"] {
+  --text: #dbdbdb;
+  --background: #121212;
+  --primary: #de4c2b;
+  --secondary: #2b691b;
+  --accent: #328f4d;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
   
   
   html,
@@ -34,13 +51,6 @@
     color: inherit;
     text-decoration: none;
   }
-  
-  @media (prefers-color-scheme: dark) {
-    html {
-      color-scheme: dark;
-    }
-  }
-  
   
 main{
     overflow: hidden;
@@ -279,12 +289,58 @@ form input[type="submit"]:hover{
   grid-template-rows: 1fr 8fr 1fr;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
-.sideBar .userAvatar{
+.sideBar .userMenu{
+  position: relative;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.sideBar .userMenu .userAvatar{
   width: 30px;
   height: 30px;
+  margin: 0 auto;
+  transition: .1s ease-in;
+  position: relative;
+  cursor: pointer;
 }
+.settingsHover{
+  position: relative;
+  top: -50%;
+  left: 80%;
+  z-index: -10;
+  transform: translate(0%, -80%);
+}
+.settingsHover::before{
+  content: '';
+  position: absolute;
+  top: 25%;
+  left: 0;
+  width: 0; 
+  height: 0; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent; 
+  border-right:10px solid var(--text); 
+  transform: translate(-100%, 0%);
+}
+.settingsHover div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  width: fit-content;
+  height: fit-content;
+  padding: 10px 20px;
+  background-color: var(--text);
+  color: var(--background);
+  fill: var(--background) !important;
+}
+
 .sideBar .userAvatar svg path{
   fill: var(--text);
   transition: .1s ease-in;
@@ -293,6 +349,13 @@ form input[type="submit"]:hover{
   fill: var(--primary);
 }
 
+.addList{
+  transition: .1s ease-in;
+}
+.addList:hover{
+  cursor: pointer;
+  fill: var(--primary) !important;
+}
 
 .logOut svg path{
   fill: var(--text) !important;
@@ -304,6 +367,15 @@ form input[type="submit"]:hover{
 .logOut svg:hover path{
   fill: red !important; 
 }
+
+.tasksLists{
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 50px;
+  height: 100%;
+}
+
 
 .mainContent{
   background-color: var(--background);

@@ -1,6 +1,6 @@
 'use client'
 import React, { useRef } from "react";
-import styles from "../../app/main.css";
+import styles from "../../../app/main.css";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import { useState, useEffect} from 'react';
@@ -49,8 +49,8 @@ function Dashboard(){
         settingsMenuRef.current.style.zIndex = "-10";
     }
   }
-  function goToSettings(){
-    router.push("/dashboard/settings")
+  function goToDashboard(){
+    router.push("/dashboard")
   }
   const avatar = localStorage.getItem("userAvatar");
     return (
@@ -58,11 +58,11 @@ function Dashboard(){
         <section className="sideBar">
             <div className="userMenu">
             {avatar && (
-                <div className="userAvatar" onMouseOver={showSettings} onMouseOut={hideSettings} onClick={goToSettings} dangerouslySetInnerHTML={{ __html: avatar }} />
+                <div className="userAvatar" onMouseOver={showSettings} onMouseOut={hideSettings} onClick={goToDashboard} dangerouslySetInnerHTML={{ __html: avatar }} />
             )}
             <div ref={settingsMenuRef} className="settingsHover">
                 <div>
-                    <p>settings</p>
+                    <p>dashboard</p>
                 </div>
             </div>
             </div>
@@ -75,8 +75,8 @@ function Dashboard(){
         </section>
         <section className="mainContent">
             <div className="tutorial">
-                <h2>ADD YOUR FIRST TO-DO-LIST</h2>
-                <p>Click on + icon on the sidebar to add to-do-list</p>
+                <h2>SETTINGS</h2>
+                <p>----------------</p>
             </div>
         </section>
     </main>
