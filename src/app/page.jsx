@@ -1,11 +1,16 @@
 'use client';
 import React from "react";
-import Image from "next/image";
+import { useState, useEffect} from 'react';
 import styles from "./main.css";
 import Link from 'next/link';
 import Nav from "./components/Nav";
+import themeSwitcher from "@/functions/themeSwitcher";
+
 
 export default function Page() {
+  useEffect(() => {
+    themeSwitcher(); // Ensures it runs only on the client
+  }, []);
   return (
     <main className={styles.page}>
     <Nav />

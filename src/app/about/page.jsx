@@ -1,9 +1,15 @@
+'use client'
 import React from "react";
 import Nav from "../components/Nav";
 import styles from "../../app/main.css";
 import Link from "next/link";
+import { useState, useEffect} from 'react';
+import themeSwitcher from "@/functions/themeSwitcher";
 
 function About(){
+    useEffect(() => {
+        themeSwitcher(); // Ensures it runs only on the client
+    }, []);
     return (
     <main className={styles.page}>
         <Nav />

@@ -56,11 +56,9 @@ const handleSubmit = async (e) => {
 
   return (
     <section className="changeUsernameDiv" style={styles.page}>
-        <div>
-            <h2>CHANGE USERNAME</h2>
-        </div>
+        <h2>CHANGE USERNAME</h2>
         <form onSubmit={handleSubmit}>
-                <input type="text" name="listName" placeholder="new username" onChange={handleChange} value={formData.username}/>
+                <input type="text" name="username" placeholder="new username" onChange={handleChange} value={formData.username}/>
                 <p className="errorMsg">{errorMsg}</p>
                 <input type="submit" name="change" value="CHANGE"/>
         </form>

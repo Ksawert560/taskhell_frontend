@@ -17,6 +17,7 @@ body[data-theme="light"] {
 body[data-theme="dark"] {
   --text: #dbdbdb;
   --background: #121212;
+  --backgroundSec: #242424;
   --primary: #de4c2b;
   --secondary: #2b691b;
   --accent: #328f4d;
@@ -70,6 +71,7 @@ nav .menu{
   padding-left:0px;
 }
 nav .menu .hiddenMenuBtn{
+  fill: var(--text);
   display: none;
 }
 nav .hiddenMenu{
@@ -78,6 +80,7 @@ nav .hiddenMenu{
 }
 nav .menuClose{
   display: none;
+  fill: var(--text);
 }
 nav .hiddenMenu ul{
   display: none;
@@ -460,6 +463,89 @@ form input[type="submit"]:hover{
 .listDivIcon:hover{
   cursor: pointer;
   background-color: var(--primary);
+}
+
+/* SETTINGS PAGE */
+.settingsWrap{
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  /* row-gap: 40px; */
+  text-align: center;
+}
+.settingsWrap h2{
+  font-size: 1.75rem;
+}
+/* CHANGEUSERNAME COMPONENT */
+.changeUsernameDiv{
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+}
+
+.changeUsernameDiv input[type="submit"]{
+  background-color: var(--text);
+  color: var(--background);
+  border: 1px solid var(--text);
+  transition: .2s ease-in;
+}
+.changeUsernameDiv input[type="submit"]:hover{
+  cursor: pointer;
+  background-color: var(--primary);
+  color: var(--background);
+}
+
+/* CHANGEPASSWORD COMPONENT */
+.changePasswordDiv{
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+}
+
+.changePasswordDiv input[type="submit"]{
+  background-color: var(--text);
+  color: var(--background);
+  border: 1px solid var(--text);
+  transition: .2s ease-in;
+}
+.changePasswordDiv input[type="submit"]:hover{
+  cursor: pointer;
+  background-color: var(--primary);
+  color: var(--background);
+}
+/* CHANGETHEME COMPONENT */
+.changeThemeDiv{
+  margin-top: 50px;
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+}
+.buttonWrap{
+  margin: 0 auto;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: fit-content;
+  width: fit-content;
+  text-align: center;
+  column-gap: 10px;
+}
+.changeThemeDiv .buttonTheme{
+  padding: 10px 20px;
+  border: 1px solid var(--text);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--text);
+  color: var(--background);
+  border: 1px solid var(--text);
+  transition: .2s ease-in;
+}
+.changeThemeDiv .buttonTheme:hover{
+  cursor: pointer;
+  background-color: var(--primary);
+  color: var(--background);
+}
+
+.selectedTheme{
+  background-color: var(--primary) !important;
 }
 
 /* RESPONSIVE */

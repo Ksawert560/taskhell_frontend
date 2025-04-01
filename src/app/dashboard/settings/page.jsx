@@ -1,12 +1,13 @@
 'use client'
-import React, { useRef } from "react";
+import React from "react";
 import styles from "../../../app/main.css";
-import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import { useState, useEffect} from 'react';
 import SideBar from "@/app/components/SideBar";
 import ChangeUsernameDiv from "@/app/components/ChangeUsername";
 import ChangePasswordDiv from "@/app/components/ChangePassword";
+import ChangeTheme from "@/app/components/ChangeTheme";
+import themeSwitcher from "@/functions/themeSwitcher";
 
 
 function Dashboard(){
@@ -16,6 +17,7 @@ function Dashboard(){
     const [addListVar, setAddListVar] = useState(false)
 
   useEffect(() => {
+    themeSwitcher()
     const jwtSession = localStorage.getItem('JWT_REFRESH');
 
     if (!jwtSession) {
@@ -47,9 +49,10 @@ function Dashboard(){
     <main className={styles.page}>
       <SideBar showAddLists={showAddLists}/>
       <section className="mainContent">
-        <div className="tutorial">
+        <div className="settingsWrap">
           <ChangeUsernameDiv />
           <ChangePasswordDiv />
+          <ChangeTheme />
         </div>
       </section>
     </main>

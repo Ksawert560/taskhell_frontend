@@ -5,8 +5,8 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect} from 'react';
 import CreateTaskDiv from "../components/CreateTask";
 import axios from "axios";
-import ListIcon from "../components/ListIcon";
 import SideBar from "../components/SideBar";
+import themeSwitcher from "@/functions/themeSwitcher";
 
 
 function Dashboard(){
@@ -16,6 +16,7 @@ function Dashboard(){
   const [addListVar, setAddListVar] = useState(false)
 
   useEffect(() => {
+    themeSwitcher()
     const jwtSession = localStorage.getItem('JWT_REFRESH');
 
     if (!jwtSession) {

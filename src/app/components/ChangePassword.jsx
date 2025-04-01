@@ -65,18 +65,16 @@ const handleSubmit = async (e) => {
 
   return (
     <section className="changePasswordDiv" style={styles.page}>
-        <div>
-            <h2>CHANGE PASSWORD</h2>
-        </div>
+        <h2>CHANGE PASSWORD</h2>
         <form onSubmit={handleSubmit}>
             <div className="passDiv">
-                <input type="password" name="old_password" placeholder="old password" onChange={handleChange} value={formData.oldPassword} />
+                <input type="password" name="oldPassword" placeholder="old password" onChange={handleChange} value={formData.oldPassword} />
                   <svg onClick={changeType} xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#000000" viewBox="0 0 256 256">
                   <path className="pathSVG" d={openEye}></path>
                   </svg>
             </div>
             <div className="passDiv">
-                <input type="password" name="new_password" placeholder="new password" onChange={handleChange} value={formData.newPassword} />
+                <input type="password" name="newPassword" placeholder="new password" onChange={handleChange} value={formData.newPassword} />
                 <svg onClick={changeType} xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#000000" viewBox="0 0 256 256">
                 <path className="pathSVG" d={openEye}></path>
                 </svg>
