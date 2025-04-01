@@ -71,7 +71,6 @@ function Login(){
         data.forEach((value, key) => (jsonData[key] = value));
 
         const jsonString = JSON.stringify(jsonData);
-        console.log(jsonString);
 
         let response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/login`, jsonString, {
             headers: {

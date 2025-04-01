@@ -374,6 +374,15 @@ form input[type="submit"]:hover{
   transform: translate(-50%, 0%);
   width: 50px;
   height: 100%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-rows: repeat(25, 1fr);
+  overflow-y: scroll;
+  row-gap: 10px;
+}
+.tasksLists svg{
+  margin: 0 auto;
 }
 
 
@@ -393,6 +402,64 @@ form input[type="submit"]:hover{
 }
 .tutorial h2{
   font-size: 2rem;
+}
+
+
+/* CREATE TASK DIV COMPONENT*/
+.createListContainer{
+  position: absolute;
+  border: 2px solid var(--text);
+  border-radius: 5px;
+  z-index: 99;
+  background-color: var(--background);
+  width: 500px;
+  height: 250px;
+  gap: 10px;
+  padding: 20px 20px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.createListContainer svg{
+  position: absolute;
+  top: 10%;
+  right: 2%;
+  transition: .2s ease-in;
+}
+.createListContainer svg:hover{
+  fill: var(--primary) !important;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+.createListContainer form input[type="submit"]{
+  color: var(--background);
+  background-color: var(--text);
+  transition: .2s ease-in;
+  border: 1px solid var(--text);
+}
+.createListContainer form input[type="submit"]:hover{
+  background-color: var(--primary);
+}
+
+/* LISTICON COMPONENT */
+.listDivIcon{
+  color: var(--background);
+  background-color: var(--text);
+  border-radius: 5px;
+  padding: 5px 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: .1s ease-in;
+}
+.listDivIcon:hover{
+  cursor: pointer;
+  background-color: var(--primary);
 }
 
 /* RESPONSIVE */
