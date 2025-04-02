@@ -16,7 +16,7 @@ const [formData, setFormData] = useState({
     oldPassword: '',
     newPassword: '',
 });
-    
+// handler for changing values of inputs
 const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 };
@@ -28,7 +28,7 @@ function changeType(){
     passInput.type === "password" ? passInput.type = "text" : passInput.type = "password";
     pathSVG.getAttribute("d") === closedEye ? pathSVG.setAttribute("d", openEye) : pathSVG.setAttribute("d", closedEye); 
 }
-
+// function that checks if inputs are empty if not returns true
 function isEmpty() {  
     if (formData.listName === "") {
       setErrorMessage("Please enter a new name");
@@ -37,7 +37,7 @@ function isEmpty() {
     } 
     return true;
 }
-
+// function that handels a form submit
 const handleSubmit = async (e) => {
     e.preventDefault();
     if(isEmpty()){

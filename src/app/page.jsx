@@ -9,7 +9,7 @@ import themeSwitcher from "@/functions/themeSwitcher";
 
 export default function Page() {
   useEffect(() => {
-    themeSwitcher(); // Ensures it runs only on the client
+    themeSwitcher();
   }, []);
   return (
     <main className={styles.page}>

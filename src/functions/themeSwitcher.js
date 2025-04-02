@@ -1,3 +1,4 @@
+// function that checks if THEME exists in local storage and changing data-theme attribute in <body>
 function themeSwitcher(){
     const body = document.getElementsByTagName("body");
     if(localStorage.getItem("THEME")){

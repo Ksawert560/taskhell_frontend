@@ -13,14 +13,16 @@ body[data-theme="light"] {
   --primary: #d44221;
   --secondary: #a5e496;
   --accent: #70cd8a;
+  --borderColor: #242424
 }
 body[data-theme="dark"] {
   --text: #dbdbdb;
   --background: #121212;
   --backgroundSec: #242424;
-  --primary: #de4c2b;
+  --primary: #ff896e;
   --secondary: #2b691b;
   --accent: #328f4d;
+  --borderColor: #242424
 }
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
@@ -148,7 +150,7 @@ h1, p, h1 span, p span{
 }
 
 .hero .button{
-    border: 2px solid var(--text);
+    border: 2px solid var(--borderColor);
     background-color: var(--primary);
     color: var(--background);
     padding: 10px 0px;
@@ -171,7 +173,7 @@ h1, p, h1 span, p span{
 
 .loginChooser{
   background-color: var(--background);
-  border: 2px solid var(--text);
+  border: 2px solid var(--borderColor);
   border-radius: 7px;
   width: 400px;
   display: grid;
@@ -188,7 +190,7 @@ h1, p, h1 span, p span{
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--text);
+  border: 1px solid var(--borderColor);
   padding: 10px 10px;
   margin: 0px;
   border-radius: 5px 0px 0px 5px;
@@ -215,6 +217,7 @@ form{
 }
 
 .passDiv svg{
+  fill: var(--text) !important;
   position: absolute;
   top: 20%;
   left: 90%;
@@ -228,7 +231,7 @@ form{
 }
 
 form input[type="text"], form input[type="password"]{
-  border: 1px solid var(--text);
+  border: 1px solid var(--borderColor);
   border-radius: 5px;
   padding: 10px 20px;
   margin: 10px 0px;
@@ -327,7 +330,7 @@ form input[type="submit"]:hover{
   height: 0; 
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent; 
-  border-right:10px solid var(--text); 
+  border-right:10px solid var(--borderColor); 
   transform: translate(-100%, 0%);
 }
 .settingsHover div{
@@ -385,6 +388,7 @@ form input[type="submit"]:hover{
   row-gap: 10px;
 }
 .tasksLists svg{
+  fill: var(--text) !important;
   margin: 0 auto;
 }
 
@@ -407,11 +411,17 @@ form input[type="submit"]:hover{
   font-size: 2rem;
 }
 
-
-/* CREATE TASK DIV COMPONENT*/
+/* CREATE TASK */
+.inTheMiddle{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* CREATE TASK + LIST DIV COMPONENT*/
 .createListContainer{
   position: absolute;
-  border: 2px solid var(--text);
+  border: 2px solid var(--borderColor);
   border-radius: 5px;
   z-index: 99;
   background-color: var(--background);
@@ -426,6 +436,7 @@ form input[type="submit"]:hover{
   text-align: center;
 }
 .createListContainer svg{
+  fill: var(--text) !important;
   position: absolute;
   top: 10%;
   right: 2%;
@@ -440,7 +451,7 @@ form input[type="submit"]:hover{
   color: var(--background);
   background-color: var(--text);
   transition: .2s ease-in;
-  border: 1px solid var(--text);
+  border: 1px solid var(--borderColor);
 }
 .createListContainer form input[type="submit"]:hover{
   background-color: var(--primary);
@@ -484,7 +495,7 @@ form input[type="submit"]:hover{
 .changeUsernameDiv input[type="submit"]{
   background-color: var(--text);
   color: var(--background);
-  border: 1px solid var(--text);
+  border: 1px solid var(--borderColor);
   transition: .2s ease-in;
 }
 .changeUsernameDiv input[type="submit"]:hover{
@@ -502,7 +513,7 @@ form input[type="submit"]:hover{
 .changePasswordDiv input[type="submit"]{
   background-color: var(--text);
   color: var(--background);
-  border: 1px solid var(--text);
+  border: 1px solid var(--borderColor);
   transition: .2s ease-in;
 }
 .changePasswordDiv input[type="submit"]:hover{
@@ -528,14 +539,13 @@ form input[type="submit"]:hover{
 }
 .changeThemeDiv .buttonTheme{
   padding: 10px 20px;
-  border: 1px solid var(--text);
+  border: 1px solid var(--borderColor);
   border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--text);
   color: var(--background);
-  border: 1px solid var(--text);
   transition: .2s ease-in;
 }
 .changeThemeDiv .buttonTheme:hover{
@@ -547,6 +557,62 @@ form input[type="submit"]:hover{
 .selectedTheme{
   background-color: var(--primary) !important;
 }
+
+
+/* MAINCONTENT COMPONENT */
+.bentoWraper{
+  width: 95%;
+  height: 95%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 9fr 3fr;
+  gap: 30px;
+}
+.bentoWraper .tasksWraper{
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--borderColor);
+  border-radius: 5px;
+  padding: 10px 20px;
+  display: grid;
+  grid-template-rows: 1fr 10fr .4fr;
+}
+.bentoWraper .tasksWraper .listHeader{
+  display: grid;
+  grid-template-columns: 11fr .2fr;
+}
+.bentoWraper .tasksWraper .listHeader svg{
+  fill: var(--text) !important;
+} 
+.bentoWraper .tasksWraper .listHeader svg:hover{
+  cursor: pointer;
+  fill: var(--primary) !important;
+}
+.bentoWraper .tasksWraper .createTaskButton{ 
+  background-color: var(--text);
+  color: var(--background);
+  border: 1px solid var(--borderColor);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+  transition: .1s ease-in;
+}
+.bentoWraper .tasksWraper .createTaskButton:hover{
+  cursor: pointer;
+  background-color: var(--primary);
+} 
+
+.bentoWraper .widgetWraper{
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--borderColor);
+  border-radius: 5px;
+}
+
 
 /* RESPONSIVE */
 
