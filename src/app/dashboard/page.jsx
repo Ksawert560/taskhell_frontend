@@ -70,7 +70,6 @@ function Dashboard(){
   // functions that sends info about witch list was clicked
   const handleListClick = (name) => {
     setChoosedListVar(name);
-    console.log(name)
   };
 
 return (

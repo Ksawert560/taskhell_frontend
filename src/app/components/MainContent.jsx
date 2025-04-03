@@ -7,6 +7,10 @@ import axios from "axios";
 import CreateTaskDiv from "./CreateTask";
 import themeSwitcher from "@/functions/themeSwitcher";
 import TaskElement from "./TaskElement";
+import WeatherWidget from "./WeatherWidget";
+import RandomTaskWidget from "./RandomTaskWidget";
+import FooterWidget from "./FooterWidget";
+
 
 function MainContent({currentList}){
     themeSwitcher();
@@ -15,6 +19,7 @@ function MainContent({currentList}){
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [messageArray, setMessageArray] = useState([]); // Initialize as an empty array
     const [addTask, setAddTask] = useState(false)
+    const [isCreatedTask, setIsCreatedTask] = useState(false)
 
     useEffect(() => {
         themeSwitcher()
@@ -46,13 +51,15 @@ function MainContent({currentList}){
         if (isAuthenticated) {
           fetchTasks();
         }
-      }, [router, isAuthenticated, currentList]);
+      }, [router, isAuthenticated, currentList, isCreatedTask]);
     
     function showCreateTask(){
         setAddTask(true)
+        setIsCreatedTask(false)
     }
     function hideCreateTask(){
         setAddTask(false)
+        setIsCreatedTask(true)
     }
         
 return (
@@ -73,7 +80,9 @@ return (
             </div>
         </section>
         <section className="widgetWraper">
-isdafbha
+            <WeatherWidget />
+            <RandomTaskWidget />
+            <FooterWidget />
         </section>
     </section>
 )

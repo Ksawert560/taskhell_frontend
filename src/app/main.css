@@ -573,11 +573,12 @@ form input[type="submit"]:hover{
   height: 100%;
   border: 2px solid var(--borderColor);
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 20px 30px;
   display: grid;
   grid-template-rows: 1fr 10fr .4fr;
 }
 .bentoWraper .tasksWraper .listHeader{
+  font-size: 1.35rem;
   display: grid;
   grid-template-columns: 11fr .2fr;
 }
@@ -609,13 +610,109 @@ form input[type="submit"]:hover{
 .bentoWraper .widgetWraper{
   width: 100%;
   height: 100%;
-  border: 2px solid var(--borderColor);
-  border-radius: 5px;
+  display: grid;
+  grid-template-rows:5fr 5fr 2fr;
+  row-gap: 30px;
 }
 
+/* TASKELEMENT */
+.taskElement{
+  width: 100%;
+  display: grid;
+  grid-template-columns: .2fr 10fr;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
+.taskElement .bigCirle{
+  background-color: var(--text);
+  width: 15px;
+  height: 15px;
+  border-radius: 100px;
+}
+.taskElement .taskContent{
+  display: grid;
+  grid-template-columns: 10fr .2fr;
+  border-bottom: 1px solid var(--text);
+}
+.taskElement .taskContent .taskElementMenu{
+  justify-self: end;
+  width: fit-content;
+  fill: var(--text) !important;
+  cursor: pointer;
+  transition: .1s ease-in;
+}
+.taskElement .taskContent .taskElementMenu:hover{
+  fill: var(--primary) !important;
+}
+
+/* WEATHER WIDGET */
+.weatherWraper{
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--borderColor);
+  border-radius: 5px;
+  padding: 20px 30px;
+}
+
+/* RANDOM TASK WIDGET */
+.randomTaskWraper{
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--borderColor);
+  border-radius: 5px;
+  padding: 20px 30px;
+  display: grid;
+  grid-template-rows: 1fr 3fr .3fr;
+}
+
+.randomTaskWraper .randomTaskButton{
+  text-align: center;
+  background-color: var(--text);
+  color: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: .1s ease-in;
+}
+.randomTaskWraper p{
+  font-size: 1.1rem;
+}
+.randomTaskWraper .randomTaskButton:hover{
+  cursor: pointer;
+  background-color: var(--primary);
+}
+
+/* FOOTER WIDGET */
+.footerWraper{
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--borderColor);
+  border-radius: 5px;
+  padding: 20px 30px;
+  display: grid;
+  grid-template-rows: 1fr 3fr .3fr;
+}
+
+.footerWraper .footerImgWraper{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-direction: row;
+}
+
+.footerWraper .footerImgWraper img{
+  width: 40px;
+  height: 40px;
+  size: 50px;
+  border-radius: 100px;
+}
+.footerWraper .footerImgWraper img:hover{
+  cursor: pointer;
+}
 /* RESPONSIVE */
-
 @media screen and (min-width:1001px) and (max-width: 1200px) {
   .hero{
     align-items: center;
