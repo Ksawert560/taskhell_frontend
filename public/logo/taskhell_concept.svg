@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="13.229167mm"
+   height="9.4494047mm"
+   viewBox="0 0 13.229167 9.4494047"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="taskhell_concept.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="21.22606"
+     inkscape:cx="18.562088"
+     inkscape:cy="20.446564"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid182"
+       empspacing="20"
+       originx="-68.791678"
+       originy="-26.458331" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Warstwa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-68.791675,-26.458333)">
+    <g
+       id="g980"
+       transform="matrix(0,0.35714283,-0.35714283,0,89.580364,8.3121395e-7)"
+       style="stroke-width:2.8;fill:#ededed;fill-opacity:1">
+      <path
+         id="rect283"
+         style="fill:#ededed;fill-opacity:1;stroke-width:1.4;paint-order:stroke markers fill"
+         d="M 74.083336 47.625413 L 79.374796 47.625413 L 79.374796 42.333953 L 84.666256 42.333953 L 84.666256 58.208334 L 89.957717 58.208334 L 89.957717 42.333953 L 95.250624 42.333953 L 95.250624 47.625413 L 100.54208 47.625413 L 100.54208 42.333953 L 100.54208 37.041045 L 100.54208 26.458125 L 97.895631 21.166664 L 95.250624 26.458125 L 95.250624 37.041045 L 89.957717 37.041045 L 89.957717 31.749585 L 87.31271 26.458125 L 84.666256 31.749585 L 84.666256 37.041045 L 79.374796 37.041045 L 79.374796 26.458125 L 76.729789 21.166664 L 74.083336 26.458125 L 74.083336 47.625413 z " />
+    </g>
+  </g>
+</svg>

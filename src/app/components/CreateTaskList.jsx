@@ -1,18 +1,17 @@
+// components/CreateTaskList.js
 'use client';
 import React, {useState, useEffect} from "react";
 import styles from "../../app/main.css";
 import axios from "axios";
 
-function CreateTaskDiv({ onClose }) {
-    const [userError, setUserError] = useState(null);
-    const [errorMsg, setErrorMessage] = useState("empty");
-
-
+function CreateTaskDiv({ onClose, onListCreated }) { // Receive the onListCreated prop
+  const [userError, setUserError] = useState(null);
+  const [errorMsg, setErrorMessage] = useState("empty");
 
 const [formData, setFormData] = useState({
     listName: '',
 });
-    
+
 const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 };
@@ -20,12 +19,12 @@ useEffect(() => {
     setUserError(document.getElementsByClassName("errorMsg")[0]);
 }, []);
 
-function isEmpty() {  
+function isEmpty() {
     if (formData.listName === "") {
       setErrorMessage("Please enter a name");
       userError.style.visibility = "visible";
       return false;
-    } 
+    }
     return true;
 }
 
@@ -39,7 +38,6 @@ const handleSubmit = async (e) => {
         data.forEach((value, key) => (jsonData[key] = value));
 
         const jsonString = JSON.stringify(jsonData);
-        console.log(jsonString);
 
         let response = await axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/lists`, jsonString, {
             headers: {
@@ -47,12 +45,13 @@ const handleSubmit = async (e) => {
                 'Content-Type': 'application/json',
             }
         });
-    } 
+        onClose();
+        onListCreated(); // Call the function to refresh the dashboard data
+    }
     catch (error) {
     }
     }
   };
-
 
   return (
     <section className="createListContainer" style={styles.page}>

@@ -2,6 +2,8 @@
 import React, {useState, useEffect} from "react";
 import styles from "../../app/main.css";
 import Link from "next/link";
+import TaskHellLogo from "../../../public/logo/taskhell_concept.svg";
+
 
 function Nav() {
   function useWindowSize() {
@@ -53,9 +55,13 @@ function Nav() {
 
   return (
     <nav className={styles.page}>
-      <h1>
-        <Link href="/">TaskHell</Link>
-      </h1>
+      <div className="logo">
+        <Link href="/">
+          <TaskHellLogo />
+          <h1>TaskHell</h1>
+        </Link>
+      </div>
+
       <section className="menu">
       <ul className="mainMenuList">
         <li>

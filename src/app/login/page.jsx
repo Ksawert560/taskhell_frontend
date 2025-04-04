@@ -81,9 +81,8 @@ function Login(){
                 'Content-Type': 'aplication/json'
             }
         });
-        console.log('Dane wysłane pomyślnie!', response.data);
         const sessionToken = response.data["session token"];
-        const refreshToken = response.data["session token"];
+        const refreshToken = response.data["refresh token"];
         localStorage.setItem("JWT_SESSION", sessionToken);
         localStorage.setItem("JWT_REFRESH", refreshToken);
     } 

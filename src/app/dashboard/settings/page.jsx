@@ -7,6 +7,7 @@ import SideBar from "@/app/components/SideBar";
 import ChangeUsernameDiv from "@/app/components/ChangeUsername";
 import ChangePasswordDiv from "@/app/components/ChangePassword";
 import ChangeTheme from "@/app/components/ChangeTheme";
+import ChangeLocation from "@/app/components/ChangeLocation";
 import themeSwitcher from "@/functions/themeSwitcher";
 
 
@@ -52,6 +53,7 @@ function Dashboard(){
         <div className="settingsWrap">
           <ChangeUsernameDiv />
           <ChangePasswordDiv />
+          <ChangeLocation />
           <ChangeTheme />
         </div>
       </section>
