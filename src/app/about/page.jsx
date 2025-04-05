@@ -29,15 +29,18 @@ function About(){
                 compliant with the project requirements, while still leaving some room to introduce some complexity.
             </p>
             <h2>About the authors</h2>
-            <p>
-                <Link href="https://github.com/Ksawert560"> Ksawery Kucz </Link> - responsible for creating the app's smooth and modern design, as well as building the frontend.
-            </p>
-            <p>
-                <Link href="https://github.com/TestkaJakub"> Jakub Testka </Link> - expertly took care of the backend, decided to elegantly throw XAMPP out of the window in favor of Docker, God bless that decision.
-            </p>
-            <p>
-                <Link href="https://github.com/mskubarc"> Miłosz Skubarczewski </Link> - took part in the design process, handled typewriting and the project's presentation.
-            </p>
+            <div className="githubProfiles">
+                <Link href="https://github.com/Ksawert560" target="_blank"><img src="https://github.com/Ksawert560.png" alt="Ksawert560" className="githubPicture"></img></Link>
+                <span> Ksawery Kucz - responsible for creating the app's smooth and modern design, as well as building the frontend.</span>
+            </div>
+            <div className="githubProfiles">
+                <Link href="https://github.com/TestkaJakub" target="_blank"><img src="https://github.com/TestkaJakub.png" alt="TestkaJakub" className="githubPicture"></img></Link>
+                <span> Jakub Testka - expertly handled the backend, decided to elegantly throw XAMPP out of the window in favor of Docker, God bless that decision. </span>
+            </div>
+            <div className="githubProfiles">
+                <Link href="https://github.com/mskubarc" target="_blank"><img src="https://github.com/mskubarc.png" alt="mskubarc" className="githubPicture"></img></Link>
+                <span> Miłosz Skubarczewski - took part in the design process, took care of typewriting and the project's presentation. </span>
+            </div>
         </section>
     </main>
     )
