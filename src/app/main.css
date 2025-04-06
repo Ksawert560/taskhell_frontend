@@ -679,7 +679,7 @@ form input[type="submit"]:hover{
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-rows:5fr 5fr 2fr;
+  grid-template-rows:4fr 5fr 2fr;
   row-gap: 30px;
 }
 
@@ -691,6 +691,7 @@ form input[type="submit"]:hover{
   gap: 10px;
   align-items: center;
   margin-bottom: 20px;
+  position: relative;
 }
 
 .taskElement .bigCirle{
@@ -713,6 +714,65 @@ form input[type="submit"]:hover{
 }
 .taskElement .taskContent .taskElementMenu:hover{
   fill: var(--primary) !important;
+}
+
+.taskElement .taskElementHiddenMenu{
+  position: absolute;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  right: 0;
+}
+.taskElement .taskElementHiddenMenu svg path{
+  fill: var(--text) !important
+}
+
+.taskElement .taskElementHiddenMenu svg:hover, 
+.taskElement .taskElementHiddenMenu p:hover{
+  cursor: pointer;
+}
+
+/* EDIT TASK DIV */
+.editTaskWraper{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--borderColor);
+  border-radius: 5px;
+  z-index: 99;
+  background-color: var(--background);
+  width: 500px;
+  height: 250px;
+  gap: 10px;
+  padding: 20px 20px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.editTaskWraper svg{
+  fill: var(--text) !important;
+  position: absolute;
+  top: 10%;
+  right: 2%;
+  transition: .2s ease-in;
+}
+.editTaskWraper svg:hover{
+  fill: var(--primary) !important;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+.editTaskWraper form input[type="submit"]{
+  color: var(--background);
+  background-color: var(--text);
+  transition: .2s ease-in;
+  border: 1px solid var(--borderColor);
+}
+.editTaskWraper form input[type="submit"]:hover{
+  background-color: var(--primary);
 }
 
 /* WEATHER WIDGET */
@@ -741,6 +801,33 @@ form input[type="submit"]:hover{
   justify-content: center;
   justify-self: end;
   text-align: right;
+}
+
+.weatherWraper .weatherWidget{
+  display: grid;
+  grid-template-columns: 2fr 1.5fr;
+  /* background-color: pink; */
+  height: 90%;
+  align-self: center;
+  justify-self: center;
+  align-items: center;
+  justify-content: center;
+}
+.weatherWraper .weatherWidget .weatherLeft {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr .3fr;
+  justify-self: center;
+  align-self: center;
+
+}
+.weatherWraper .weatherWidget .weatherLeft .currentTemp{
+  font-size: 7rem;
+  font-weight: bold;
+}
+.weatherWraper .weatherWidget .weatherLeft .weatherIcon{
+  background-color: blue;
+  width: 100%;
 }
 
 /* RANDOM TASK WIDGET */
@@ -802,10 +889,10 @@ form input[type="submit"]:hover{
 /* RESPONSIVE */
 @media screen and (max-width: 2232px){
   .bentoWraper .tasksWraper{
-    height: 75.5%;
+    height: 82.5%;
   }
   .bentoWraper .widgetWraper{
-    height: 75.5%;
+    height: 82.5%;
   }
 
 }

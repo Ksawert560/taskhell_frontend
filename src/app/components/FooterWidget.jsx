@@ -21,7 +21,7 @@ function FooterWidget() {
                 <img src="githubImg/pseu.png"  />
             </Link>
         </div>
-        <p>Feel free to buy as an energy drink or coffee</p>
+        <p>Feel free to buy us an energy drink or coffee</p>
     </section>
   );
 }

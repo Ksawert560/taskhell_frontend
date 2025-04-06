@@ -7,17 +7,16 @@ import axios from "axios";
 import ListIcon from "../components/ListIcon";
 
 
-function SideBar({showAddLists, messageArray, choosedList, onListCreated}){
+function SideBar({showAddLists, messageArray, choosedList, currentList, tokenRefreshStop}){
   const router = useRouter();
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const settingsMenuRef = useRef(null);
   const [currentPlace, setCurrentPlace] = useState("");
-  const [choosedListVar, setChoosedListVar] = useState("")
 
   useEffect(() => {
-    const jwtSession = localStorage.getItem('JWT_REFRESH');
+    const jwtSession = localStorage.getItem('JWT_REFRESH'); //load sesstion token on load
 
     if (!jwtSession) {
       router.push('/');
@@ -34,9 +33,10 @@ function SideBar({showAddLists, messageArray, choosedList, onListCreated}){
     return <p>Loading...</p>;
   }
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated) { //check if user is authenticated
     return null;
   }
+  //function for handling a logout
   async function handleLogout() {
     try {
       let response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/logout`, null, {
@@ -49,6 +49,7 @@ function SideBar({showAddLists, messageArray, choosedList, onListCreated}){
       localStorage.removeItem('JWT_REFRESH');
       localStorage.removeItem('JWT_SESSION');
       localStorage.removeItem('tokenRefresh');
+      tokenRefreshStop();
       router.push('/');
     }
     catch (error) {
@@ -74,7 +75,7 @@ function SideBar({showAddLists, messageArray, choosedList, onListCreated}){
     }
 
   }
-const avatar = localStorage.getItem("userAvatar");
+const avatar = localStorage.getItem("userAvatar"); //load avatar from local storage
 
 return (
       <section className="sideBar" style={styles.page}>
@@ -91,7 +92,7 @@ return (
           <div className="tasksLists">
           <svg className="addList" onClick={showAddLists} xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#000000" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path></svg>
             {messageArray && messageArray.map(item =>(
-              <ListIcon key={item.id} listName={item.id} name={item.id} choosedList={choosedList} />
+              <ListIcon key={item.id} listName={item.id} name={item.id} choosedList={choosedList} currentList={currentList} />
             ))}
           </div>
           <div className="logOut" onClick={handleLogout}>
