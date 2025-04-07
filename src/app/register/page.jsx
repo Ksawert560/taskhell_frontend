@@ -32,7 +32,6 @@ function Register(){
 
     useEffect(() => {
       themeSwitcher()
-      // Ten kod wykona się dopiero w przeglądarce
       setUserError(document.getElementsByClassName("errorMsg")[0]);
       setPassInput(document.getElementsByName("password")[0]);
       setPassInputRep(document.getElementsByName("repeatPassword")[0]);
@@ -40,10 +39,12 @@ function Register(){
       setPathSVG2(document.getElementsByClassName("pathSVG2")[0]);
     }, []);
 
+    //function that changes an type of input from password to text and vice versa
     function changeType(){
       passInput.type === "password" ? passInput.type = "text" : passInput.type = "password";
       pathSVG.getAttribute("d") === closedEye ? pathSVG.setAttribute("d", openEye) : pathSVG.setAttribute("d", closedEye); 
     }
+    //does the same that changeType() but for password repeat input
     function changeTypeRep(){
       passInputRep.type === "password" ? passInputRep.type = "text" : passInputRep.type = "password";
       pathSVG2.getAttribute("d") === closedEye ? pathSVG2.setAttribute("d", openEye) : pathSVG2.setAttribute("d", closedEye); 
@@ -54,6 +55,7 @@ function Register(){
       passInputRep.type === "password" ? "" : changeTypeRep();
     }
 
+    //checks if inputs are empty
     function isEmpty() {  
       if (formData.username === "") {
         setErrorMessage("Please enter a username");
@@ -75,6 +77,7 @@ function Register(){
       return true;
     }
 
+    //checks if provide passwords match
     function isPasswordMatch(){
         if(formData.password !== formData.repeatPassword){
             setErrorMessage("Passwords do not match");

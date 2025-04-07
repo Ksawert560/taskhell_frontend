@@ -3,7 +3,7 @@ import React, {useState, useEffect} from "react";
 import styles from "../../app/main.css";
 import axios from "axios";
 
-function CreateTaskDiv({ onClose, listID, taskCreated }) {
+function CreateTaskDiv({ onClose, listID }) {
     const [userError, setUserError] = useState(null);
     const [errorMsg, setErrorMessage] = useState("empty");
 

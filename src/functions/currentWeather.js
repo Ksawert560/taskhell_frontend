@@ -24,7 +24,6 @@ async function getCurrentWeather(){
     humidity = response.data.current.humidity;
     feelsLike = response.data.current.feelslike_c;
     windSpeed = response.data.current.wind_kph;
-    // You might also want to extract min and max temperatures from response.data.forecast.forecastday[0].day
     // minTemp = response.data.forecast?.forecastday?.[0]?.day?.mintemp_c || 0;
     // maxTemp = response.data.forecast?.forecastday?.[0]?.day?.maxtemp_c || 0;
 

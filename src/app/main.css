@@ -805,7 +805,7 @@ form input[type="submit"]:hover{
 
 .weatherWraper .weatherWidget{
   display: grid;
-  grid-template-columns: 2fr 1.5fr;
+  grid-template-columns: 2fr 1.4fr;
   /* background-color: pink; */
   height: 90%;
   align-self: center;
@@ -826,10 +826,13 @@ form input[type="submit"]:hover{
   font-weight: bold;
 }
 .weatherWraper .weatherWidget .weatherLeft .weatherIcon{
-  background-color: blue;
   width: 100%;
 }
-
+.weatherWraper .weatherWidget .weatherLeft .weatherIcon svg{
+  fill: var(--text) !important;
+  height: 100px !important;
+  width: 100px !important;
+}
 /* RANDOM TASK WIDGET */
 .randomTaskWraper{
   width: 100%;
@@ -894,9 +897,43 @@ form input[type="submit"]:hover{
   .bentoWraper .widgetWraper{
     height: 82.5%;
   }
+  .weatherWraper .weatherWidget .weatherLeft .currentTemp{
+    font-size: 6.5rem;
+  }
+  .weatherWraper .weatherWidget .weatherLeft .weatherIcon svg{
+    height: 80px !important;
+    width: 80px !important;
+  }
 
 }
-@media screen and (max-width: 1325px){
+@media screen and (max-width: 1950px){
+  .weatherWraper .weatherWidget .weatherLeft .currentTemp{
+    font-size: 6rem;
+  }
+  .weatherWraper .weatherWidget .weatherLeft .weatherIcon svg{
+    height: 70px !important;
+    width: 70px !important;
+  }
+}
+@media screen and (max-width: 1750px){
+  .weatherWraper .weatherWidget .weatherLeft .currentTemp{
+    font-size: 5.5rem;
+  }
+  .weatherWraper .weatherWidget .weatherLeft .weatherIcon svg{
+    height: 60px !important;
+    width: 60px !important;
+  }
+}
+@media screen and (max-width: 1650px){
+  .weatherWraper .weatherWidget .weatherLeft .currentTemp{
+    font-size: 4.5rem;
+  }
+  .weatherWraper .weatherWidget .weatherLeft .weatherIcon svg{
+    height: 50px !important;
+    width: 50px !important;
+  }
+}
+@media screen and (max-width: 1500px){
   .bentoWraper{
     grid-template-columns: 1fr;
   }

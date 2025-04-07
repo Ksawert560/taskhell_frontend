@@ -1,6 +1,6 @@
 // pages/dashboard/index.js
 'use client'
-import React, { useRef } from "react";
+import React from "react";
 import styles from "../../app/main.css";
 import { useRouter } from 'next/navigation';
 import { useState, useEffect} from 'react';

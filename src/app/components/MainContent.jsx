@@ -10,14 +10,14 @@ import TaskElement from "./TaskElement";
 import WeatherWidget from "./WeatherWidget";
 import RandomTaskWidget from "./RandomTaskWidget";
 import FooterWidget from "./FooterWidget";
-// import getCurrentWeather from "@/functions/currenWeather";
+
 
 function MainContent({currentList, onListDelete}){
     themeSwitcher();
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(true);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [messageArray, setMessageArray] = useState([]); // Initialize as an empty array
+    const [messageArray, setMessageArray] = useState([]); 
     const [addTask, setAddTask] = useState(false)
     const [isCreatedTask, setIsCreatedTask] = useState(false)
     const [isEditTaskVisible, setIsEditTaskVisible] = useState(false)
@@ -40,7 +40,6 @@ function MainContent({currentList, onListDelete}){
         if (isAuthenticated) {
           fetchTasks();
         }
-        // getCurrentWeather()
       }, [router, isAuthenticated, currentList, isCreatedTask]);
       
       //function that fetches tasks from DB

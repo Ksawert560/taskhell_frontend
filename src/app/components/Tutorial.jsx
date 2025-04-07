@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from "react";
-import styles from "../../app/main.css";
+import React from "react";
 
 function Tutorial() {
 
