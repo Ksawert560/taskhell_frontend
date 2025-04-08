@@ -45,15 +45,15 @@ function SideBar({showAddLists, messageArray, choosedList, currentList, tokenRef
             'Content-Type': 'aplication/json'
           }
         });
-      console.log(response.data.message);
       localStorage.removeItem('JWT_REFRESH');
       localStorage.removeItem('JWT_SESSION');
       localStorage.removeItem('tokenRefresh');
+      localStorage.removeItem('intervalToken')
       tokenRefreshStop();
       router.push('/');
     }
     catch (error) {
-        console.error('Błąd podczas wysyłania danych:', error);
+        console.error('Error while sending data:', error);
     }
   }
   function showSettings(){
@@ -90,7 +90,7 @@ return (
               </div>
           </div>
           <div className="tasksLists">
-          <svg className="addList" onClick={showAddLists} xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#000000" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path></svg>
+         {pathname=="/dashboard"?  <svg className="addList" onClick={showAddLists} xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#000000" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path></svg> : null}
             {messageArray && messageArray.map(item =>(
               <ListIcon key={item.id} listName={item.id} name={item.id} choosedList={choosedList} currentList={currentList} />
             ))}

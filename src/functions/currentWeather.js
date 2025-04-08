@@ -39,7 +39,7 @@ async function getCurrentWeather(){
     };
   }
   catch (error) {
-    console.error('Błąd podczas wysyłania danych:', error);
+    console.error('Error while retrieving data:', error);
     // Return an empty object or some default values in case of an error
     return {
       currentTemp: 0,

@@ -889,6 +889,29 @@ form input[type="submit"]:hover{
 .footerWraper .footerImgWraper img:hover{
   cursor: pointer;
 }
+
+/* POP UP WINDOW */
+.popUpWindow{
+  position: fixed;
+  bottom: 2%;
+  left: 50%;
+  background-color: var(--background);
+  width: fit-content;
+  height: fit-content;
+  padding: 20px 20px;
+  border: 2px solid var(--borderColor);
+  border-radius: 5px;
+  transform: translate(-50%, -2%);
+  /* display: ; */
+}
+
+.popUpWindow .timeLeft{
+  width: 100%;
+  background-color: var(--text);
+  height: 3px;
+  transition: .2s ease-in;
+}
+
 /* RESPONSIVE */
 @media screen and (max-width: 2232px){
   .bentoWraper .tasksWraper{

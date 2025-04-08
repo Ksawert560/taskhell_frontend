@@ -10,6 +10,7 @@ import TaskElement from "./TaskElement";
 import WeatherWidget from "./WeatherWidget";
 import RandomTaskWidget from "./RandomTaskWidget";
 import FooterWidget from "./FooterWidget";
+import PopUpWindow from "./PopUpWindow";
 
 
 function MainContent({currentList, onListDelete}){
@@ -18,10 +19,12 @@ function MainContent({currentList, onListDelete}){
     const [isLoading, setIsLoading] = useState(true);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [messageArray, setMessageArray] = useState([]); 
-    const [addTask, setAddTask] = useState(false)
-    const [isCreatedTask, setIsCreatedTask] = useState(false)
-    const [isEditTaskVisible, setIsEditTaskVisible] = useState(false)
-    const [currentLocation, setCurrentLocation] = useState(null)
+    const [addTask, setAddTask] = useState(false);
+    const [isCreatedTask, setIsCreatedTask] = useState(false);
+    const [isEditTaskVisible, setIsEditTaskVisible] = useState(false);
+    const [currentLocation, setCurrentLocation] = useState(null);
+    const [showPopUp, setShowPopUp] = useState(false);
+    const [popUpOption, setPopUpOption] = useState(null)
 
     useEffect(() => {
         themeSwitcher()
@@ -70,7 +73,6 @@ function MainContent({currentList, onListDelete}){
         setIsCreatedTask(true)
     }
     async function deleteTask(taskID){
-        alert("delete")
         try {
             const data = new FormData();
             data.append('task id', taskID);
@@ -78,8 +80,6 @@ function MainContent({currentList, onListDelete}){
             data.forEach((value, key) => (jsonData[key] = value));
     
             const jsonString = JSON.stringify(jsonData);
-            console.log(jsonString);
-            console.log(localStorage.getItem("JWT_SESSION"));
             let response = await axios.delete(`${process.env.NEXT_PUBLIC_SERVER_URL}/tasks`,{
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem("JWT_SESSION")}`,
@@ -88,6 +88,8 @@ function MainContent({currentList, onListDelete}){
                 data: jsonString,
             });
             fetchTasks();// Call the function to refresh the tasks data
+            setShowPopUp(true)
+            setPopUpOption("delete")
         } 
         catch (error) {
         }
@@ -110,8 +112,6 @@ function MainContent({currentList, onListDelete}){
             data.forEach((value, key) => (jsonData[key] = value));
     
             const jsonString = JSON.stringify(jsonData);
-            console.log(jsonString);
-            console.log(localStorage.getItem("JWT_SESSION"));
             let response = await axios.delete(`${process.env.NEXT_PUBLIC_SERVER_URL}/lists`,{
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem("JWT_SESSION")}`,
@@ -128,7 +128,7 @@ function MainContent({currentList, onListDelete}){
         
 return (
     <section className="bentoWraper" style={styles.page}>
-            {addTask ? <CreateTaskDiv onClose={hideCreateTask} listID={currentList}/> : ""}
+            {addTask ? <CreateTaskDiv onClose={hideCreateTask} listID={currentList} setShowPopUp={setShowPopUp} setPopUpOption={setPopUpOption} /> : ""}
         <section className="tasksWraper">
             <div className="listHeader">
                 <h2>TO-DO</h2>
@@ -147,6 +147,8 @@ return (
                     showEditTask={showEditTask}
                     hideEditTask={hideEditTask}
                     isEditTaskVisible={isEditTaskVisible}
+                    setShowPopUp={setShowPopUp}
+                    setPopUpOption={setPopUpOption}
                 />
             ))}
             </div>
@@ -159,6 +161,7 @@ return (
             <RandomTaskWidget />
             <FooterWidget />
         </section>
+        {showPopUp?<PopUpWindow popUpOption={popUpOption} setShowPopUp={setShowPopUp} showPopUp={showPopUp} />:null}
     </section>
 )
 }

@@ -88,7 +88,7 @@ function Login(){
         localStorage.setItem("JWT_REFRESH", refreshToken);
     } 
     catch (error) {
-        console.error('Błąd podczas wysyłania danych:', error);
+        console.error('Error while sending data:', error);
     }
     }
     checkAvatar(formData.username)

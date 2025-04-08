@@ -118,7 +118,7 @@ const handleSubmit = async (e) => {
               userError.style.visibility = "visible";
             }
             else{
-              console.error('Błąd podczas wysyłania danych:', error);
+              console.error('Error while sending data:', error);
             }
 
         }

@@ -2,7 +2,6 @@ import axios from "axios";
 
 // Function to make the API call to refresh the tokens
   async function tokenRefresh() {
-    console.log("refresh");
     try {
       let response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/refresh`, null, {
         headers: {
@@ -16,16 +15,50 @@ import axios from "axios";
       localStorage.setItem("JWT_REFRESH", refreshToken);
     }
     catch (error) {
-        console.error('Błąd podczas wysyłania danych:', error);
+        console.error('Error while sending data:', error);
     }
   }
   // Function to schedule the API call every 1.5 hours
-  function scheduleApiCall() {
-    const interval = 1.5 * 60 * 60 * 1000; // 1.5 hours in milliseconds
-    // const interval = 1*60*1000; //1 min
+  let interval = 0;
 
-    // Call the API immediately when the function is executed
-    // tokenRefresh();
+  function intervalUpdate(initialInterval) {
+    let interval = initialInterval;
+    if (isNaN(interval)) {
+      console.error("Initial interval is not a valid number.");
+      return;
+    }
+    localStorage.setItem('intervalToken', interval); // Set the initial value
+  
+    const intervalId = setInterval(() => {
+      const storedInterval = localStorage.getItem('intervalToken');
+      let currentInterval = storedInterval;
+  
+      if (isNaN(currentInterval)) {
+        console.error("Value in localStorage is not a valid number. Clearing interval.");
+        clearInterval(intervalId);
+        return;
+      }
+  
+      currentInterval = currentInterval - 1000;
+      localStorage.setItem('intervalToken', currentInterval);
+  
+      if (currentInterval <= 0) {
+        clearInterval(intervalId);
+        console.log('Interval finished.');
+      }
+    }, 1000);
+  }
+  
+
+  function scheduleApiCall() {
+    if(localStorage.getItem('intervalToken')){
+      interval = localStorage.getItem('intervalToken');
+    }
+    else{
+      interval = 1.5 * 60 * 60 * 1000; // 1.5 hours in milliseconds
+      localStorage.setItem('intervalToken', interval);
+    }
+    intervalUpdate(interval);
 
     // Set up the interval to call the API repeatedly
     setInterval(tokenRefresh, interval);
