@@ -44,7 +44,7 @@ import axios from "axios";
   
       if (currentInterval <= 0) {
         clearInterval(intervalId);
-        console.log('Interval finished.');
+        localStorage.removeItem('intervalToken');
       }
     }, 1000);
   }

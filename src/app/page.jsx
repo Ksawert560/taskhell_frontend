@@ -10,6 +10,7 @@ import themeSwitcher from "@/functions/themeSwitcher";
 export default function Page() {
   useEffect(() => {
     themeSwitcher();
+    // localStorage.setItem("firstLogin", false);
   }, []);
   return (
     <main className={styles.page}>

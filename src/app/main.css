@@ -902,7 +902,6 @@ form input[type="submit"]:hover{
   border: 2px solid var(--borderColor);
   border-radius: 5px;
   transform: translate(-50%, -2%);
-  /* display: ; */
 }
 
 .popUpWindow .timeLeft{

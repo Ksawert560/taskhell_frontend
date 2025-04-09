@@ -7,7 +7,7 @@ import axios from "axios";
 import ListIcon from "../components/ListIcon";
 
 
-function SideBar({showAddLists, messageArray, choosedList, currentList, tokenRefreshStop}){
+function SideBar({showAddLists, messageArray, choosedList, currentList }){
   const router = useRouter();
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(true);
@@ -47,9 +47,8 @@ function SideBar({showAddLists, messageArray, choosedList, currentList, tokenRef
         });
       localStorage.removeItem('JWT_REFRESH');
       localStorage.removeItem('JWT_SESSION');
-      localStorage.removeItem('tokenRefresh');
+      localStorage.removeItem("firstLogin")
       localStorage.removeItem('intervalToken')
-      tokenRefreshStop();
       router.push('/');
     }
     catch (error) {

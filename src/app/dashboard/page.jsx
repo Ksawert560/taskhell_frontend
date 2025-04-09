@@ -13,8 +13,6 @@ import MainContent from "../components/MainContent";
 import scheduleApiCall from "@/functions/tokenRefresh";
 
 
-let isTokenRefreshScheduled = false;
-
 function Dashboard(){
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
@@ -23,6 +21,7 @@ function Dashboard(){
   const [listExists, setListExists] = useState(false);
   const [messageArray, setMessageArray] = useState([]);
   const [choosedListVar, setChoosedListVar] = useState(null)
+  const [firstLogin, setFirstLogin] = useState(false)
 
   // Function to fetch the lists from DB
   const fetchLists = async () => {
@@ -43,20 +42,38 @@ function Dashboard(){
 
 
   useEffect(() => {
-    // Declare a global variable to track if the token refresh is scheduled
-    if(!localStorage.getItem("tokenRefresh")){
-      localStorage.setItem("tokenRefresh", true);
-    }
     themeSwitcher()
     const jwtSession = localStorage.getItem('JWT_REFRESH');
 
     if (!jwtSession) {
       router.push('/');
     } else {
+      if(!localStorage.getItem("firstLogin")){
+        localStorage.setItem("firstLogin", true);
+        setFirstLogin(true);
+      }
+      else if(localStorage.getItem("firstLogin")==false){
+        localStorage.setItem("firstLogin", true);
+        setFirstLogin(true);
+      }
+      else if(localStorage.getItem("firstLogin")){
+        setFirstLogin(localStorage.getItem("firstLogin"));
+      }else{
+        setFirstLogin(true);
+        localStorage.setItem("firstLogin", true);
+        localStorage.removeItem('intervalToken');
+      }
       setIsAuthenticated(true);
-      if (!isTokenRefreshScheduled) {
+      
+      if (!localStorage.getItem('intervalToken') && firstLogin) {
+        localStorage.removeItem('intervalToken');
         scheduleApiCall();
-        isTokenRefreshScheduled = true; // Set the flag
+      }
+      else if(localStorage.getItem('intervalToken') && firstLogin){
+        scheduleApiCall();
+      }
+      else{
+        localStorage.removeItem('interalToken')
       }
     }
     setIsLoading(false);
@@ -84,10 +101,6 @@ function Dashboard(){
   const handleListClick = (name) => {
     setChoosedListVar(name);
   };
-  function tokenRefreshStop(){
-    isTokenRefreshScheduled=false;
-  }
-
 
 
 return (
@@ -96,9 +109,8 @@ return (
         showAddLists={showAddLists}
         messageArray={messageArray}
         choosedList={handleListClick}
-        onListCreated={fetchLists} // Pass the fetchLists function as a prop
+        onListCreated={fetchLists}
         currentList={choosedListVar}
-        tokenRefreshStop={tokenRefreshStop}
       />
       <section className="mainContent">
         {listExists ? choosedListVar ? <MainContent currentList={choosedListVar} onListDelete={fetchLists}/> : <h2>CHOOSE A LIST FROM A SIDEBAR BELOW + ICON</h2> : <Tutorial />}
