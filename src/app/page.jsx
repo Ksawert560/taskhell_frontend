@@ -27,7 +27,7 @@ export default function Page() {
           we hate to-do-lists. <span className="lowOpacity">[not really]</span>
           <br />
           From the team that brought you nothing and uses vikunja.
-          <span className="lowOpacity">[why though?]</span>
+          <span className="lowOpacity"> [why though?]</span>
         </p>
       </div>
 
