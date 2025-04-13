@@ -18,7 +18,9 @@ function MainContent({currentList, onListDelete}){
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(true);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [messageArray, setMessageArray] = useState([]); 
+    const [allTasks, setAllTasks] =useState([]);
+    const [unfinishedTasks, setUnfinishedTasks] = useState([]); 
+    const [finishedTasks, setFinishedTasks] = useState([]);
     const [addTask, setAddTask] = useState(false);
     const [isCreatedTask, setIsCreatedTask] = useState(false);
     const [isEditTaskVisible, setIsEditTaskVisible] = useState(false);
@@ -58,7 +60,10 @@ function MainContent({currentList, onListDelete}){
                     "list": listID,
                 }
             });
-            setMessageArray(response.data.message);
+            setAllTasks(response.data.message);
+            setUnfinishedTasks(response.data.message.filter(task => task.finished === 0 || task.finished === "0"));
+            setFinishedTasks(response.data.message.filter(task => task.finished === 1 || task.finished === "1"));
+
         } 
         catch (error) {
         }
@@ -71,6 +76,53 @@ function MainContent({currentList, onListDelete}){
     function hideCreateTask(){
         setAddTask(false)
         setIsCreatedTask(true)
+    }
+
+    async function finishTask(taskID){
+        try {
+            const data = new FormData();
+            data.append('task id', taskID)
+            data.append('finished', 1);
+            const jsonData = {};
+            data.forEach((value, key) => (jsonData[key] = value));
+    
+            const jsonString = JSON.stringify(jsonData);
+    
+            let response = await axios.patch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tasks`, jsonString, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem("JWT_SESSION")}`,
+                    'Content-Type': 'application/json',
+                }
+            });
+            fetchTasks();
+            setShowPopUp(true)
+            setPopUpOption("finish")
+        } 
+        catch (error) {
+        }
+    }
+    async function unfinishTask(taskID){
+        try {
+            const data = new FormData();
+            data.append('task id', taskID)
+            data.append('finished', 0);
+            const jsonData = {};
+            data.forEach((value, key) => (jsonData[key] = value));
+    
+            const jsonString = JSON.stringify(jsonData);
+    
+            let response = await axios.patch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tasks`, jsonString, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem("JWT_SESSION")}`,
+                    'Content-Type': 'application/json',
+                }
+            });
+            fetchTasks();
+            setShowPopUp(true)
+            setPopUpOption("unfinish")
+        } 
+        catch (error) {
+        }
     }
     async function deleteTask(taskID){
         try {
@@ -129,19 +181,21 @@ function MainContent({currentList, onListDelete}){
 return (
     <section className="bentoWraper" style={styles.page}>
             {addTask ? <CreateTaskDiv onClose={hideCreateTask} listID={currentList} setShowPopUp={setShowPopUp} setPopUpOption={setPopUpOption} /> : ""}
+        <section className="leftSideWraper">
         <section className="tasksWraper">
             <div className="listHeader">
                 <h2>TO-DO</h2>
                 <svg onClick={deleteList} xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#000000" viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
             </div>
             <div className="taskList">
-            {messageArray && messageArray.map(item =>(
+            {unfinishedTasks && unfinishedTasks.map(item =>(
                 <TaskElement 
                     key={item.id} 
                     taskID={item.id}
                     taskName={item.task} 
                     name={item.task} 
                     choosedList={currentList} 
+                    onTaskFinish={finishTask}
                     onTaskDelete={deleteTask} 
                     currenList={currentList}
                     showEditTask={showEditTask}
@@ -155,6 +209,35 @@ return (
             <div className="createTaskButton" onClick={showCreateTask}>
                 CREATE
             </div>
+        </section>
+        {finishedTasks && finishedTasks.length > 0 ? (
+            <section className="finishedTasksWraper">
+            <div className="listHeader">
+                <h2>FINISHED</h2>
+            </div>
+            <div className="taskList">
+            {finishedTasks && finishedTasks.map(item =>(
+                <TaskElement 
+                    key={item.id} 
+                    taskID={item.id}
+                    taskName={item.task} 
+                    name={item.task} 
+                    choosedList={currentList} 
+                    onTaskFinish={finishTask}
+                    onTaskDelete={deleteTask} 
+                    currenList={currentList}
+                    showEditTask={showEditTask}
+                    hideEditTask={hideEditTask}
+                    isEditTaskVisible={isEditTaskVisible}
+                    setShowPopUp={setShowPopUp}
+                    setPopUpOption={setPopUpOption}
+                    isFinished={true}
+                    onTaskUnfinish={unfinishTask}
+                />
+            ))}
+            </div>
+            </section>
+        ) : null}
         </section>
         <section className="widgetWraper">
             <WeatherWidget />

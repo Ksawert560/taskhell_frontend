@@ -34,13 +34,13 @@ function PopUpWindow({ popUpOption, setShowPopUp, showPopUp }) {
             if (widhtLeft <= 0) {
                 clearInterval(intervalId);
             }
-        }, 175);
+        }, 225);
     }
 
     function delay(){
         setTimeout(()=>{
             hidePopUp();
-        }, 2500);
+        }, 3500);
     }
 
 

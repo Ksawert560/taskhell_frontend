@@ -26,6 +26,40 @@ const passiveAggresiveComentsDeleteTask = [
     "Womp womp."
 ];
 
+const passiveAggresiveComentsTasksFinish = [
+    "Wait, you actually finished one? Are you feeling okay?",
+    "Marked as 'done'. Are we being honest with ourselves here?",
+    "Wow. Don't let this sudden burst of productivity go to your head.",
+    "Okay, what important thing did you neglect in order to finish *this*?",
+    "Did you click that option by accident? Be careful.",
+    "Finished? Or just lowered your standards enough to call it done?",
+    "One task down. Now you can relax... and ignore the rest.",
+    "Alright, *that's* done. Ready to revert to your usual habits?",
+    "Impressive. For you, I mean.",
+    "*Slow, sarcastic clap*",
+    "You completed a task! Do you want a participation trophy?",
+    "Okay, logged. Don't expect a parade.",
+    "Look at you, pretending to be productive.",
+    "Finished? Let's see how long that lasts."
+  ];
+  
+  const passiveAggresiveComentsTasksUnfinish = [
+    "Ah, back to its natural state: unfinished. That feels right.",
+    "Knew that 'finished' flag looked out of place.",
+    "Changed your mind already? Can't say I'm surprised.",
+    "Was the crushing weight of accomplishment too much to bear?",
+    "There we go. Balance is restored to the universe.",
+    "So... you *didn't* actually finish it? Color me shocked.",
+    "Un-doing tasks now? Bold strategy.",
+    "Right, because 'finished' is such a strong commitment.",
+    "Welcome back to the 'I'll do it later' pile.",
+    "Indecisive much? Just leave it unchecked next time.",
+    "Okay, it's 'undone'. Feel better now?",
+    "Back it goes. It probably prefers being ignored anyway.",
+    "Couldn't handle the success, huh?",
+    "Yep, that seems more your speed."
+  ];
+
 function randomCommentGenerator(popUpOption){
     let randomComment = ""
     let randomIndex = 0
@@ -37,6 +71,14 @@ function randomCommentGenerator(popUpOption){
         case "delete":
             randomIndex = Math.floor(Math.random() * passiveAggresiveComentsDeleteTask.length);
             randomComment = passiveAggresiveComentsDeleteTask[randomIndex];
+        break;
+        case "finish":
+            randomIndex = Math.floor(Math.random() * passiveAggresiveComentsTasksFinish.length);
+            randomComment = passiveAggresiveComentsTasksFinish[randomIndex];
+        break;
+        case "unfinish":
+            randomIndex = Math.floor(Math.random() * passiveAggresiveComentsTasksUnfinish.length);
+            randomComment = passiveAggresiveComentsTasksUnfinish[randomIndex];
         break;
     }
 

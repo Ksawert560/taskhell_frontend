@@ -30,15 +30,15 @@ function About(){
             </p>
             <h2>About the authors</h2>
             <div className="githubProfiles">
-                <Link href="https://github.com/Ksawert560" target="_blank"><img src="https://github.com/Ksawert560.png" alt="Ksawert560" className="githubPicture"></img></Link>
+                <Link href="https://github.com/Ksawert560" target="_blank" title="Ksawert"><img src="githubImg/ksawert.png" alt="Ksawert560" className="githubPicture"></img></Link>
                 <span> Ksawery Kucz - responsible for creating the app's smooth and modern design, as well as building the frontend.</span>
             </div>
             <div className="githubProfiles">
-                <Link href="https://github.com/TestkaJakub" target="_blank"><img src="https://github.com/TestkaJakub.png" alt="TestkaJakub" className="githubPicture"></img></Link>
+            <Link href="https://github.com/TestkaJakub" target="_blank" title="TestkaJakub"><img src="githubImg/pseu.png" alt="TestkJakub" className="githubPicture"></img></Link>
                 <span> Jakub Testka - expertly handled the backend, decided to elegantly throw XAMPP out of the window in favor of Docker, God bless that decision. </span>
             </div>
             <div className="githubProfiles">
-                <Link href="https://github.com/mskubarc" target="_blank"><img src="https://github.com/mskubarc.png" alt="mskubarc" className="githubPicture"></img></Link>
+                <Link href="https://github.com/mskubarc" target="_blank" title="mskubarc"><img src="githubImg/mskubarc.png" alt="mskubarc" className="githubPicture"></img></Link>
                 <span> Miłosz Skubarczewski - took part in the design process, took care of typewriting and the project's presentation. </span>
             </div>
         </section>

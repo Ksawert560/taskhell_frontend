@@ -118,7 +118,9 @@ const handleSubmit = async (e) => {
               userError.style.visibility = "visible";
             }
             else{
-              console.error('Error while sending data:', error);
+              const serverResponse = error.response.data.errors[0];
+              setErrorMessage(serverResponse[0].toUpperCase() + serverResponse.slice(1));
+              userError.style.visibility = "visible";
             }
 
         }
