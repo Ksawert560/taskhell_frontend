@@ -22,6 +22,30 @@ function Dashboard(){
   const [messageArray, setMessageArray] = useState([]);
   const [choosedListVar, setChoosedListVar] = useState(null)
   const [firstLogin, setFirstLogin] = useState(false)
+  function useWindowSize() {
+    const [windowSize, setWindowSize] = useState({
+      width: undefined,
+      height: undefined,
+    });
+  
+    useEffect(() => {
+      function handleResize() {
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }
+  
+      window.addEventListener('resize', handleResize);
+      handleResize();
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
+  
+    return windowSize;
+  }
+  
+  const size = useWindowSize();
+
 
   // Function to fetch the lists from DB
   const fetchLists = async () => {
@@ -113,7 +137,7 @@ return (
         currentList={choosedListVar}
       />
       <section className="mainContent">
-        {listExists ? choosedListVar ? <MainContent currentList={choosedListVar} onListDelete={fetchLists}/> : <h2>CHOOSE A LIST FROM A SIDEBAR BELOW + ICON</h2> : <Tutorial />}
+        {listExists ? choosedListVar ? <MainContent currentList={choosedListVar} onListDelete={fetchLists}/> : size.width<1000? <h2>CLICK ON MENU BUTTON [TOP RIGHT] AND CHOOSE LIST</h2> : <h2>CHOOSE A LIST FROM A SIDEBAR BELOW + ICON</h2> : <Tutorial />}
         {addListVar ? <CreateTaskDiv onClose={hideAddLists} onListCreated={fetchLists} /> : ""} {/* Pass it to CreateTaskDiv too */}
       </section>
     </main>
