@@ -25,7 +25,7 @@ function CurrentDateTime() {
 
   return (
     <div className='clockWraper'>
-      <h3 className='currenTime'>{formattedTime}</h3>
+      <h3 className='currentTime'>{formattedTime}</h3>
       <p>{dayOfWeek}, {formattedDate}</p>
     </div>
   );
