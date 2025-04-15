@@ -1,4 +1,9 @@
+import CurrentDateTime from '@/app/components/CurrentDateTime';
 import axios from 'axios';
+
+// Not sure if we should throw the moon phases into a separate file altogether, but for now it's gonna be here xd
+
+
 
 async function getCurrentWeather(){
   let currentTemp = 0;
@@ -8,6 +13,8 @@ async function getCurrentWeather(){
   let minTemp = 0;
   let maxTemp = 0;
   let windSpeed = 0;
+  let date = CurrentDateTime.formattedDate;
+  let moonPhase = "-";
   try {
     let response = await axios.get(`${process.env.NEXT_PUBLIC_WEATHER_SERVER_URL}`, {
       params:{
@@ -16,7 +23,7 @@ async function getCurrentWeather(){
         'aqi': 'no'
       },
       headers: {
-        'Content-Type': 'aplication/json'
+        'Content-Type': 'application/json'
       },
     });
     currentTemp = response.data.current.temp_c;
@@ -27,6 +34,20 @@ async function getCurrentWeather(){
     // minTemp = response.data.forecast?.forecastday?.[0]?.day?.mintemp_c || 0;
     // maxTemp = response.data.forecast?.forecastday?.[0]?.day?.maxtemp_c || 0;
 
+    // Getting info about current moon phase
+
+    let moonphase = await axios.get(`${process.env.NEXT_PUBLIC_WEATHER_SERVER_URL}/astronomy.json`, {
+      params: {
+        'key': process.env.NEXT_PUBLIC_WEATHER_API_KEY,
+        'q': localStorage.getItem('location'),
+        'dt': date
+      },
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+    moonPhase = moonphase.data.astronomy.astro.moon_phase;
+
     // Return an object containing the variables
     return {
       currentTemp,
@@ -35,7 +56,8 @@ async function getCurrentWeather(){
       feelsLike,
     //   minTemp,
     //   maxTemp,
-      windSpeed
+      windSpeed,
+      moonPhase
     };
   }
   catch (error) {
@@ -48,7 +70,8 @@ async function getCurrentWeather(){
       feelsLike: 0,
     //   minTemp: 0,
     //   maxTemp: 0,
-      windSpeed: 0
+      windSpeed: 0,
+      moonPhase: "Go outside and have a look."
     };
   }
 }

@@ -27,7 +27,8 @@ function WeatherWidget() {
     feelsLike: 0,
     minTemp: 0,
     maxTemp: 0,
-    windSpeed: 0
+    windSpeed: 0,
+    moonPhase: "-"
   });
 
   useEffect(() => {
@@ -134,6 +135,9 @@ function WeatherWidget() {
           <p>humidity: {weatherData.humidity}%</p>
           <p>feels like: {weatherData.feelsLike}°C</p>
           <p>wind speed: {weatherData.windSpeed} km/h</p>
+        </div>
+        <div className="moonPhase">
+            <p> moon phase: {weatherData.moonPhase.toLocaleLowerCase()} </p>
         </div>
       </div>
     </section>
