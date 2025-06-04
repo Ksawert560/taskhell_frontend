@@ -21,6 +21,7 @@ function Dashboard(){
   const [listExists, setListExists] = useState(false);
   const [messageArray, setMessageArray] = useState([]);
   const [choosedListVar, setChoosedListVar] = useState(null)
+  const [choosedListName, setChoosedListName] = useState(null)
   const [firstLogin, setFirstLogin] = useState(false)
   function useWindowSize() {
     const [windowSize, setWindowSize] = useState({
@@ -124,6 +125,8 @@ function Dashboard(){
   // functions that sends info about witch list was clicked
   const handleListClick = (name) => {
     setChoosedListVar(name);
+    setChoosedListName(messageArray.find(item => item.id === name)?.name || null);
+    console.log(choosedListName)
   };
 
 
@@ -137,7 +140,7 @@ return (
         currentList={choosedListVar}
       />
       <section className="mainContent">
-        {listExists ? choosedListVar ? <MainContent currentList={choosedListVar} onListDelete={fetchLists}/> : size.width<1000? <h2>CLICK ON MENU BUTTON [TOP RIGHT] AND CHOOSE LIST</h2> : <h2>CHOOSE A LIST FROM A SIDEBAR BELOW + ICON</h2> : <Tutorial />}
+        {listExists ? choosedListVar ? <MainContent currentList={choosedListVar} onListDelete={fetchLists} currentListName={choosedListName}/> : size.width<1000? <h2>CLICK ON MENU BUTTON [TOP RIGHT] AND CHOOSE LIST</h2> : <h2>CHOOSE A LIST FROM A SIDEBAR BELOW + ICON</h2> : <Tutorial />}
         {addListVar ? <CreateTaskDiv onClose={hideAddLists} onListCreated={fetchLists} /> : ""} {/* Pass it to CreateTaskDiv too */}
       </section>
     </main>
