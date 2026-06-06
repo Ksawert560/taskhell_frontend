@@ -1,0 +1,52 @@
+= Taskhell Frontend
+:author: Ksawery Kucz, Miłosz Skubarczewski, Jakub Testka
+:revdate: 2026-06-06
+:toc: left
+
+== Description
+
+Frontend for the Taskhell task management app,
+developed as part of the 'Internet Technologies' labs and further revisited for 'Content Management Systems and Platforms' labs.
+Built with Next.js and React, communicating with the Taskhell backend API.
+
+== Technologies
+
+* Next.js 15
+* React
+* Docker
+
+== Setup
+
+=== Prerequisites
+
+* Docker
+
+=== Environment Variables
+
+Create a `.env` file by following the structure provided in the `example.env` file.
+
+Required variables:
+
+* `NEXT_PUBLIC_SERVER_URL` - URL of the Taskhell backend API
+* `NEXT_PUBLIC_WEATHER_SERVER_URL` - URL of the weather API
+* `NEXT_PUBLIC_WEATHER_API_KEY` - API key for the weather service
+* `FRONTEND_PORT` - port to expose the frontend on
+
+=== Build and Run
+
+[source,bash]
+----
+docker compose build
+docker compose up
+----
+
+== Notes
+
+* The weather widget requires a valid API key from https://www.weatherapi.com[weatherapi.com] - without it the widget will display default values but the rest of the app works normally.
+* The frontend expects the Taskhell backend to be running and accessible at the URL defined in `NEXT_PUBLIC_SERVER_URL`.
+
+== Authors
+
+* Ksawery Kucz
+* Miłosz Skubarczewski
+* Jakub Testka
