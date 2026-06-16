@@ -70,7 +70,7 @@ jobs:
         with:
           task-definition: task-definition.json
           container-name: taskhell-frontend # Must match the container name inside your task definition
-          image: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-north-1.amazonaws.com/taskhell-frontend:latest 
+          image: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-north-1.amazonaws.com/taskhell-frontend
 
       - name: 3. Deploy the new task definition revision to ECS
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
