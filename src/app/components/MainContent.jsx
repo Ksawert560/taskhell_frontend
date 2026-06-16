@@ -51,7 +51,7 @@ function MainContent({currentList, onListDelete, currentListName}){
       async function fetchTasks(){
         let listID = parseInt(currentList)
         try {        
-            let response = await axios.get(`${process.env.SERVER_URL}/tasks`, {
+            let response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/tasks`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem("JWT_SESSION")}`,
                     'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ function MainContent({currentList, onListDelete, currentListName}){
     
             const jsonString = JSON.stringify(jsonData);
     
-            let response = await axios.patch(`${process.env.SERVER_URL}/tasks`, jsonString, {
+            let response = await axios.patch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tasks`, jsonString, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem("JWT_SESSION")}`,
                     'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ function MainContent({currentList, onListDelete, currentListName}){
     
             const jsonString = JSON.stringify(jsonData);
     
-            let response = await axios.patch(`${process.env.SERVER_URL}/tasks`, jsonString, {
+            let response = await axios.patch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tasks`, jsonString, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem("JWT_SESSION")}`,
                     'Content-Type': 'application/json',
@@ -132,7 +132,7 @@ function MainContent({currentList, onListDelete, currentListName}){
             data.forEach((value, key) => (jsonData[key] = value));
     
             const jsonString = JSON.stringify(jsonData);
-            let response = await axios.delete(`${process.env.SERVER_URL}/tasks`,{
+            let response = await axios.delete(`${process.env.NEXT_PUBLIC_SERVER_URL}/tasks`,{
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem("JWT_SESSION")}`,
                     'Content-Type': 'application/json',
@@ -164,7 +164,7 @@ function MainContent({currentList, onListDelete, currentListName}){
             data.forEach((value, key) => (jsonData[key] = value));
     
             const jsonString = JSON.stringify(jsonData);
-            let response = await axios.delete(`${process.env.SERVER_URL}/lists`,{
+            let response = await axios.delete(`${process.env.NEXT_PUBLIC_SERVER_URL}/lists`,{
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem("JWT_SESSION")}`,
                     'Content-Type': 'application/json',

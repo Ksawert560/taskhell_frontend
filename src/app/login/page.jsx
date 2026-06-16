@@ -77,7 +77,7 @@ function Login(){
 
         const jsonString = JSON.stringify(jsonData);
 
-        let response = await axios.post(`${process.env.SERVER_URL}/login`, jsonString, {
+        let response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/login`, jsonString, {
             headers: {
                 'Content-Type': 'application/json'
             }

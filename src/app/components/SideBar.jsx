@@ -64,7 +64,7 @@ function SideBar({showAddLists, messageArray, choosedList, currentList }){
   //function for handling a logout
   async function handleLogout() {
     try {
-      let response = await axios.post(`${process.env.SERVER_URL}/logout`, null, {
+      let response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/logout`, null, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem("JWT_REFRESH")}`,
             'Content-Type': 'application/json'

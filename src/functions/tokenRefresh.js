@@ -3,7 +3,7 @@ import axios from "axios";
 // Function to make the API call to refresh the tokens
   async function tokenRefresh() {
     try {
-      let response = await axios.post(`${process.env.SERVER_URL}/refresh`, null, {
+      let response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/refresh`, null, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem("JWT_REFRESH")}`,
           'Content-Type': 'aplication/json'

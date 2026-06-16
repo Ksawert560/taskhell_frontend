@@ -49,7 +49,7 @@ const handleSubmit = async (e) => {
 
         const jsonString = JSON.stringify(jsonData);
 
-        let response = await axios.patch(`${process.env.SERVER_URL}/users`, jsonString, {
+        let response = await axios.patch(`${process.env.NEXT_PUBLIC_SERVER_URL}/users`, jsonString, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem("JWT_SESSION")}`,
                 'Content-Type': 'application/json',

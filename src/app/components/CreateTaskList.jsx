@@ -39,7 +39,7 @@ const handleSubmit = async (e) => {
 
         const jsonString = JSON.stringify(jsonData);
 
-        let response = await axios.put(`${process.env.SERVER_URL}/lists`, jsonString, {
+        let response = await axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/lists`, jsonString, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem("JWT_SESSION")}`,
                 'Content-Type': 'application/json',

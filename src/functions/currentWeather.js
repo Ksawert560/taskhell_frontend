@@ -16,9 +16,9 @@ async function getCurrentWeather(){
   let date = CurrentDateTime.formattedDate;
   let moonPhase = "-";
   try {
-    let response = await axios.get(`${process.env.WEATHER_SERVER_URL}`, {
+    let response = await axios.get(`${process.env.NEXT_PUBLIC_WEATHER_SERVER_URL}`, {
       params:{
-        'key': process.env.WEATHER_API_KEY,
+        'key': process.env.NEXT_PUBLIC_WEATHER_API_KEY,
         'q': localStorage.getItem('location'),
         'aqi': 'no'
       },
@@ -36,9 +36,9 @@ async function getCurrentWeather(){
 
     // Getting info about current moon phase
 
-    let moonphase = await axios.get(`${process.env.WEATHER_SERVER_URL}/astronomy.json`, {
+    let moonphase = await axios.get(`${process.env.NEXT_PUBLIC_WEATHER_SERVER_URL}/astronomy.json`, {
       params: {
-        'key': process.env.WEATHER_API_KEY,
+        'key': process.env.NEXT_PUBLIC_WEATHER_API_KEY,
         'q': localStorage.getItem('location'),
         'dt': date
       },
