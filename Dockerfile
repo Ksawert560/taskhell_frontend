@@ -1,3 +1,8 @@
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+
 # --- Step 1: App build (Node.js) ---
 FROM node:20-alpine AS builder
 WORKDIR /app
@@ -8,11 +13,6 @@ RUN npm ci
 
 # Copying rest of the files
 COPY . .
-
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
 
 
 # Building production versions
