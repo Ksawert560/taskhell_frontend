@@ -79,7 +79,7 @@ function Login(){
 
         let response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/login`, jsonString, {
             headers: {
-                'Content-Type': 'aplication/json'
+                'Content-Type': 'application/json'
             }
         });
         const sessionToken = response.data["session token"];

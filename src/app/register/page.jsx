@@ -104,9 +104,10 @@ const handleSubmit = async (e) => {
 
             let response = await axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/users`, jsonString, {
                 headers: {
-                    'Content-Type': 'aplication/json'
+                    'Content-Type': 'application/json'
                 }
             });
+
             const sessionToken = response.data["session token"];
             const refreshToken = response.data["refresh token"];
             localStorage.setItem("JWT_SESSION", sessionToken);
