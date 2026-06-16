@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "taskhell_frontend/**"
 
 env:
   # Setting an environment variable with the value of a configuration variable
