@@ -127,8 +127,8 @@ return (
       </div>
       <div className="tasksLists">
     {pathname=="/dashboard"?  <svg className="addList" onClick={showAddLists} xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#000000" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path></svg> : null}
-        {messageArray && messageArray.map((item, index) =>(
-          <ListIcon key={item.id} listName={index+1} name={item.id} choosedList={choosedList} currentList={currentList} />
+        {messageArray && messageArray.map(item =>(
+          <ListIcon key={item.id} listName={item.id} name={item.id} choosedList={choosedList} currentList={currentList} />
         ))}
       </div>
       <div className="logOut" onClick={handleLogout}>
@@ -144,8 +144,8 @@ return (
           {pathname=="/dashboard"? (
           <div className="mobileMenuDashboardLists">
           <h4>Your lists</h4>
-            {messageArray && messageArray.map((item, index) =>(
-            <p key={item.id} name={item.id} onClick={() => mobileListClick(item.id)} >List {index + 1}</p>
+            {messageArray && messageArray.map(item =>(
+            <p key={item.id} name={item.id} onClick={() => mobileListClick(item.id)} >List {item.id}</p>
             ))}
             <p onClick={showAddLists} >add new list</p>
           </div>
