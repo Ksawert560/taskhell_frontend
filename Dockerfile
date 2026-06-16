@@ -1,38 +1,35 @@
-# --- ETAP 1: Budowanie aplikacji (Node.js) ---
+# --- Step 1: App build (Node.js) ---
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-# Kopiujemy pliki i instalujemy zależności
+# Copying files and installing dependencies
 COPY package*.json ./
 RUN npm ci
 
-# Kopiujemy resztę kodu źródłowego
+# Copying rest of the files
 COPY . .
 
-# Przekazujemy zmienne środowiskowe potrzebne PODCZAS BUDOWANIA (Next.js ich potrzebuje)
-ARG NEXT_PUBLIC_SERVER_URL
-ARG NEXT_PUBLIC_WEATHER_SERVER_URL
-ARG NEXT_PUBLIC_WEATHER_API_KEY
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-ENV NEXT_PUBLIC_SERVER_URL=$NEXT_PUBLIC_SERVER_URL
-ENV NEXT_PUBLIC_WEATHER_SERVER_URL=$NEXT_PUBLIC_WEATHER_SERVER_URL
-ENV NEXT_PUBLIC_WEATHER_API_KEY=$NEXT_PUBLIC_WEATHER_API_KEY
+ENTRYPOINT ["/entrypoint.sh"]
 
-# Budujemy produkcyjną wersję (generuje folder dist lub out)
+
+# Building production versions
 RUN npm run build
 
 
-# --- ETAP 2: Serwer produkcyjny (Nginx) ---
+# --- Step 2: Production server (Nginx) ---
 FROM nginx:alpine
 
-# Kopiujemy Twoją własną konfigurację Nginxa
+# Copying Nginx configuration files
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Kopiujemy ZBUDOWANE pliki z pierwszego etapu (builder)
-# Uwaga: Upewnij się, czy Next.js wyrzuca pliki do /app/dist czy do /app/out!
+# Copying files from step 1
 COPY --from=builder /app/out /usr/share/nginx/html
 
-# Informujemy ECS/Dockera, że kontener działa na porcie 3000
+# Exposing port 3000
 EXPOSE 3000
+
 
 CMD ["nginx", "-g", "daemon off;"]

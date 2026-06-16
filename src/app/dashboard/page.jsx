@@ -51,7 +51,7 @@ function Dashboard(){
   // Function to fetch the lists from DB
   const fetchLists = async () => {
     try {
-      let response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/lists`,{
+      let response = await axios.get(`${process.env.SERVER_URL}/lists`,{
         headers: {
           'Authorization': `Bearer ${localStorage.getItem("JWT_SESSION")}`,
           'Content-Type': 'application/json',
