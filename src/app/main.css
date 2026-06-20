@@ -1,5 +1,5 @@
 :root {
-    --background: #ededed;
+    --background: #7de345;
     --backgroundSec: #dadada;
     --text: #242424;
     --accent: #6fcc8b;
@@ -8,7 +8,7 @@
 
 body[data-theme="light"] {
   --text: #242424;
-  --background: #ededed;
+  --background: #7de345;
   --backgroundSec: #dadada;
   --primary: #d44221;
   --secondary: #a5e496;
